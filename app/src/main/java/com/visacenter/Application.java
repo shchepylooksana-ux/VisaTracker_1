@@ -1,8 +1,6 @@
 package com.visacenter;
 
-import java.io.Serializable;
-
-public class Application implements Serializable {
+public class Application {
     private String name;
     private String visaType;
     private int price;
@@ -16,17 +14,16 @@ public class Application implements Serializable {
     }
 
     public String getName() { return name; }
-    public String getVisaType() { return visaType; }
-    public int getPrice() { return price; }
-    public int getPaid() { return paid; }
-
     public void setName(String name) { this.name = name; }
+
+    public String getVisaType() { return visaType; }
     public void setVisaType(String visaType) { this.visaType = visaType; }
+
+    public int getPrice() { return price; }
     public void setPrice(int price) { this.price = price; }
+
+    public int getPaid() { return paid; }
     public void setPaid(int paid) { this.paid = paid; }
 
-    // Обчислює борг
-    public int getDebt() {
-        return price - paid;
-    }
+    public int getDebt() { return price - paid; }
 }

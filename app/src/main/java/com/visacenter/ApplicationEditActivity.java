@@ -10,7 +10,6 @@ public class ApplicationEditActivity extends AppCompatActivity {
 
     private EditText etName, etVisa, etPrice, etPaid;
     private Button btnSave;
-    private Application application;
     private int position;
 
     @Override
@@ -25,26 +24,20 @@ public class ApplicationEditActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
 
         Intent intent = getIntent();
-        application = (Application) intent.getSerializableExtra("application");
         position = intent.getIntExtra("position", -1);
-
-        if (application != null) {
-            etName.setText(application.getName());
-            etVisa.setText(application.getVisaType());
-            etPrice.setText(String.valueOf(application.getPrice()));
-            etPaid.setText(String.valueOf(application.getPaid()));
-        }
+        etName.setText(intent.getStringExtra("name"));
+        etVisa.setText(intent.getStringExtra("visaType"));
+        etPrice.setText(String.valueOf(intent.getIntExtra("price", 0)));
+        etPaid.setText(String.valueOf(intent.getIntExtra("paid", 0)));
 
         btnSave.setOnClickListener(v -> {
-            application.setName(etName.getText().toString());
-            application.setVisaType(etVisa.getText().toString());
-            application.setPrice(Integer.parseInt(etPrice.getText().toString()));
-            application.setPaid(Integer.parseInt(etPaid.getText().toString()));
-
-            Intent result = new Intent();
-            result.putExtra("position", position);
-            result.putExtra("application", application);
-            setResult(RESULT_OK, result);
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("position", position);
+            resultIntent.putExtra("name", etName.getText().toString());
+            resultIntent.putExtra("visaType", etVisa.getText().toString());
+            resultIntent.putExtra("price", Integer.parseInt(etPrice.getText().toString()));
+            resultIntent.putExtra("paid", Integer.parseInt(etPaid.getText().toString()));
+            setResult(RESULT_OK, resultIntent);
             finish();
         });
     }

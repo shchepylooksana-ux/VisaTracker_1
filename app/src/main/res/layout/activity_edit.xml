@@ -6,39 +6,34 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/editClientName"
+        android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ім'я клієнта" />
+        android:hint="Ім'я"/>
 
     <EditText
-        android:id="@+id/editService"
+        android:id="@+id/etVisa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Послуга" />
+        android:hint="Тип візи"/>
 
     <EditText
-        android:id="@+id/editAmount"
+        android:id="@+id/etPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Сума" />
+        android:hint="Ціна"
+        android:inputType="number"/>
 
     <EditText
-        android:id="@+id/editPaid"
+        android:id="@+id/etPaid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Оплачено" />
-
-    <EditText
-        android:id="@+id/editNotes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Примітки" />
+        android:hint="Оплачено"
+        android:inputType="number"/>
 
     <Button
         android:id="@+id/btnSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Зберегти" />
-
+        android:text="Зберегти"/>
 </LinearLayout>
