@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <EditText
-        android:id="@+id/etName"
-        android:hint="²ì'ÿ"
+        android:id="@+id/editClientName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="Ð†Ð¼'Ñ ÐºÐ»Ñ–Ñ”Ð½Ñ‚Ð°" />
 
     <EditText
-        android:id="@+id/etVisa"
-        android:hint="Òèï â³çè"
+        android:id="@+id/editService"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="ÐŸÐ¾ÑÐ»ÑƒÐ³Ð°" />
 
     <EditText
-        android:id="@+id/etPrice"
-        android:hint="Ö³íà"
-        android:inputType="number"
+        android:id="@+id/editAmount"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="Ð¡ÑƒÐ¼Ð°" />
 
     <EditText
-        android:id="@+id/etPaid"
-        android:hint="Ñïëà÷åíî"
-        android:inputType="number"
+        android:id="@+id/editPaid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="ÐžÐ¿Ð»Ð°Ñ‡ÐµÐ½Ð¾" />
+
+    <EditText
+        android:id="@+id/editNotes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ÐŸÑ€Ð¸Ð¼Ñ–Ñ‚ÐºÐ¸" />
 
     <Button
         android:id="@+id/btnSave"
-        android:text="Çáåðåãòè"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:text="Ð—Ð±ÐµÑ€ÐµÐ³Ñ‚Ð¸" />
+
 </LinearLayout>
