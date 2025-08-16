@@ -1,6 +1,5 @@
 package com.visacenter;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ApplicationEditActivity extends AppCompatActivity {
 
     private EditText etName, etVisa, etPrice, etPaid;
-    private Button btnSave;
-    private int position;
+    private Application app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,23 +19,24 @@ public class ApplicationEditActivity extends AppCompatActivity {
         etVisa = findViewById(R.id.etVisa);
         etPrice = findViewById(R.id.etPrice);
         etPaid = findViewById(R.id.etPaid);
-        btnSave = findViewById(R.id.btnSave);
+        Button btnSave = findViewById(R.id.btnSave);
 
-        Intent intent = getIntent();
-        position = intent.getIntExtra("position", -1);
-        etName.setText(intent.getStringExtra("name"));
-        etVisa.setText(intent.getStringExtra("visaType"));
-        etPrice.setText(String.valueOf(intent.getIntExtra("price", 0)));
-        etPaid.setText(String.valueOf(intent.getIntExtra("paid", 0)));
+        app = (Application) getIntent().getSerializableExtra("application");
+
+        if (app != null) {
+            etName.setText(app.getName());
+            etVisa.setText(app.getVisa());
+            etPrice.setText(String.valueOf(app.getPrice()));
+            etPaid.setText(String.valueOf(app.getPaid()));
+        }
 
         btnSave.setOnClickListener(v -> {
-            Intent resultIntent = new Intent();
-            resultIntent.putExtra("position", position);
-            resultIntent.putExtra("name", etName.getText().toString());
-            resultIntent.putExtra("visaType", etVisa.getText().toString());
-            resultIntent.putExtra("price", Integer.parseInt(etPrice.getText().toString()));
-            resultIntent.putExtra("paid", Integer.parseInt(etPaid.getText().toString()));
-            setResult(RESULT_OK, resultIntent);
+            if (app != null) {
+                app.setName(etName.getText().toString());
+                app.setVisa(etVisa.getText().toString());
+                app.setPrice(Integer.parseInt(etPrice.getText().toString()));
+                app.setPaid(Integer.parseInt(etPaid.getText().toString()));
+            }
             finish();
         });
     }

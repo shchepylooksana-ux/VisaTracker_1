@@ -1,28 +1,28 @@
 package com.visacenter;
 
-public class Application {
+import java.io.Serializable;
+
+public class Application implements Serializable {
     private String name;
-    private String visaType;
+    private String visa;
     private int price;
     private int paid;
 
-    public Application(String name, String visaType, int price, int paid) {
+    public Application(String name, String visa, int price, int paid) {
         this.name = name;
-        this.visaType = visaType;
+        this.visa = visa;
         this.price = price;
         this.paid = paid;
     }
 
     public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getVisaType() { return visaType; }
-    public void setVisaType(String visaType) { this.visaType = visaType; }
-
+    public String getVisa() { return visa; }
     public int getPrice() { return price; }
-    public void setPrice(int price) { this.price = price; }
-
     public int getPaid() { return paid; }
+
+    public void setName(String name) { this.name = name; }
+    public void setVisa(String visa) { this.visa = visa; }
+    public void setPrice(int price) { this.price = price; }
     public void setPaid(int paid) { this.paid = paid; }
 
     public int getDebt() { return price - paid; }

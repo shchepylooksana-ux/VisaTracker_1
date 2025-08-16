@@ -4,49 +4,51 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.visacenter.Application;
 import com.visacenter.R;
-import com.visacenter.model.VisaEntry;
-
 import java.util.List;
 
-public class VisaAdapter extends RecyclerView.Adapter<VisaAdapter.VH> {
-    private List<VisaEntry> items;
+public class VisaAdapter extends RecyclerView.Adapter<VisaAdapter.ViewHolder> {
 
-    public VisaAdapter(List<VisaEntry> items) {
-        this.items = items;
+    private final List<Application> applications;
+    private final OnApplicationClickListener listener;
+
+    public interface OnApplicationClickListener {
+        void onClick(Application app);
     }
 
-    public void setItems(List<VisaEntry> newItems) {
-        this.items = newItems;
-        notifyDataSetChanged();
+    public VisaAdapter(List<Application> applications, OnApplicationClickListener listener) {
+        this.applications = applications;
+        this.listener = listener;
     }
 
-    @NonNull @Override
-    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_visa, parent, false);
-        return new VH(v);
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_visa, parent, false);
+        return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VH h, int pos) {
-        VisaEntry e = items.get(pos);
-        h.txtHeader.setText(e.name + " • " + e.country + " • " + e.visaType);
-        h.txtDates.setText("Заявка: " + safe(e.requestDate) + " • Подача: " + safe(e.submitDate) + " • Вихід: " + safe(e.resultDate));
-        h.txtMoney.setText(String.format("Оплата: %.2f • Витрати: %.2f • Борг: %.2f • Чистий: %.2f", e.paid, e.expenses, e.debt, e.net()));
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Application app = applications.get(position);
+        holder.txtHeader.setText(app.getName());
+        holder.txtDates.setText(app.getVisa());
+        holder.txtMoney.setText("Борг: " + app.getDebt() + " грн");
+        holder.itemView.setOnClickListener(v -> listener.onClick(app));
     }
 
-    private String safe(String s){ return s == null ? "" : s; }
-
     @Override
-    public int getItemCount() { return items == null ? 0 : items.size(); }
+    public int getItemCount() {
+        return applications.size();
+    }
 
-    static class VH extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtHeader, txtDates, txtMoney;
-        VH(View v){
+        ViewHolder(View v) {
             super(v);
             txtHeader = v.findViewById(R.id.txtHeader);
             txtDates = v.findViewById(R.id.txtDates);
