@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Форма введення -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/edtFrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Від кого" />
+
+            <EditText
+                android:id="@+id/edtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ім'я" />
+
+            <EditText
+                android:id="@+id/edtCountry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Країна" />
+
+            <EditText
+                android:id="@+id/edtVisaType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Тип візи" />
+
+            <EditText
+                android:id="@+id/edtRequestDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Дата заявки (YYYY-MM-DD)"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/edtSubmitDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Дата подачі (YYYY-MM-DD)"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/edtResultDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Дата виходу (YYYY-MM-DD)"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/edtPaid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Оплата (скільки оплатили)"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/edtExpenses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Витрати"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/edtDebt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Скільки ще мають доплатити"
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Додати заявку"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Список -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="12dp"/>
+
+    <!-- Підсумки -->
+    <TextView
+        android:id="@+id/txtTotals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:paddingTop="8dp"
+        android:text="Підсумки: 0 віз • Оплат: 0 • Витрат: 0 • Чистий дохід: 0"/>
+</LinearLayout>
